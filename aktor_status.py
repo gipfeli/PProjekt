@@ -14,6 +14,7 @@ except:
     
 import readxlsx
 import csv
+from time import sleep
 
 import logging # Debugging
 logging.basicConfig(level=logging.DEBUG)
@@ -93,14 +94,16 @@ class aktorStatus:
         def refDBio_clicked(self, widget):
             readxlsx.readData()
             self.label = self.wTree.get_widget('status1')
-            status = self.label.get_label()
+#            status = self.label.get_label()
             data = csv.reader(open('IOTable.csv'))
             for row in data:
-                if status == row[3]:
-                    print row[3], row[4]
-                    outputstatus = row[4]
-            self.label = self.wTree.get_widget('status2')
-            self.label.set_label(outputstatus)
+#                if status == row[3]:
+#                    print row[3], row[4]
+#                    outputstatus = row[4]
+                outputstatus = row[4]
+                self.label = self.wTree.get_widget('status2')
+                self.label.set_label(outputstatus)
+                sleep(1)
             
             
             
